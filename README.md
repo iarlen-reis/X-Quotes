@@ -24,4 +24,5 @@
 ## Funcionalidades
 - [x] Verificar o quote de um tweet.
 - [ ] Salvar um tweet como favorito.
+- [ ] Aba de tweets favoritos.
 - [ ] Testes unitarios.
