@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "X Quotes",
+  "description": "Extensão para verificar o quotes de tweet.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "version": "1.0",
+  "action": {
+    "default_popup": "index.html"
+  }
+}
