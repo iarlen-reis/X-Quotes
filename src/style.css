@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Itim', cursive;
+}
+
+a {
+  text-decoration: none;
+}
+
+.app {
+  width: 200px;
+  height: 200px;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+
+  text-align: center;
+
+  padding: 1rem 1.4rem;
+  border-radius: 6px;
+
+  color: white;
+  background: #161626;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.description h1 {
+  font-size: 1.6rem;
+}
+
+.description p {
+  font-size: 1rem;
+}
+
+.btn__quotes {
+  width: 100%;
+  font-size: 1.4rem;
+  padding: 0.5rem 1rem;
+
+
+  border: none;
+  outline: none;
+  border-radius: 6px;
+
+  transition: all 0.4s;
+
+  color: white;
+  background: #2c2250;
+}
+
+.btn__quotes:hover {
+  cursor: pointer;
+  background: #443592;
+}
+
+.btn__github {
+  display: flex;
+  align-self: flex-end;
+
+  font-size: 0.8rem;
+  font-style: italic;
+
+  color: white;
+}
