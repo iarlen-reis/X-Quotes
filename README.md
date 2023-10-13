@@ -8,11 +8,14 @@
 
 ## Como instalar?
 1. Faça o clone do repositório.
-2. Abra um navegador e digite **chrome://extensions** na url.
-3. Clique em **Modo do desenvolvedor**.
-4. E selecione a opção **Carregar sem compactação**.
-5. Selecione a pasta do repositório clonado.
-6. A extensão será adicionada ao menu de extensões e agora basta usar!
+2. Entre na pasta do repositório clonado, abra o terminal e execute o seguinte comando: `yarn`.
+3. Abra um terminal e execute o seguinte comando: `yarn` para instalar as dependencias.
+4. Após instalar as dependencias, execute o seguinte comando: `yarn build` e pode fechar o terminal.
+5. Abra um navegador e digite **chrome://extensions** na url.
+6. Clique em **Modo do desenvolvedor**.
+7. E selecione a opção **Carregar sem compactação**.
+8. Selecione a pasta do repositório clonado.
+9. A extensão será adicionada ao menu de extensões e agora basta usar!
 
 ## Como usar?
 1. Abra o tweet que deseja ver o quote.
@@ -23,6 +26,6 @@
 
 ## Funcionalidades
 - [x] Verificar o quote de um tweet.
+- [x] Exibir detalhes do tweet, como imagem, descriçao, nome e username do tweet.
 - [ ] Salvar um tweet como favorito.
 - [ ] Aba de tweets favoritos.
-- [ ] Testes unitarios.
