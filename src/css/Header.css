@@ -34,3 +34,7 @@
   opacity: 0.8;
   transform: scale(1.1);
 }
+
+#header__image {
+  width: 100px;
+}
