@@ -1,0 +1,27 @@
+.footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  padding: 1rem 0;
+}
+
+.btn__github {
+  display: flex;
+  align-self: flex-end;
+
+  font-size: 0.8rem;
+  font-style: italic;
+
+  color: white;
+}
+
+.btn__github i {
+  transition: all 0.4s;
+}
+
+.btn__github i:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}

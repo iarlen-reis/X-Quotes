@@ -1,0 +1,13 @@
+.not__found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.not__found img {
+  width: 250px;
+}
+
+.not__found h1 {
+  font-size: 1.4rem;
+}

@@ -5,16 +5,18 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && tsc-alias",
     "preview": "vite preview",
-    "develop": "tsup src"
+    "develop": "tsc && tsc-alias"
   },
   "devDependencies": {
+    "@types/node": "^20.8.5",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
   },
   "dependencies": {
     "@types/chrome": "^0.0.246",
+    "tsc-alias": "^1.8.8",
     "tsup": "^7.2.0"
   }
 }
