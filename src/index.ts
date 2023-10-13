@@ -9,6 +9,12 @@ interface MessageProfileProps {
   username: string;
   image: string;
   tweet: string;
+  stats: {
+    comments: string;
+    retweets: string;
+    likes: string;
+    saves: string;
+  };
 }
 
 const linkQuotes = document.querySelector(

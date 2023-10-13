@@ -1,0 +1,40 @@
+.interation__container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.interation__list {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.interation__list li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.interation__list li i {
+  font-size: 1.1rem;
+}
+
+.interation__list li:nth-child(1) i,
+.interation__list li:nth-child(4) i{
+  color: #0096FF;
+}
+
+.interation__list li:nth-child(2) i {
+  color: #2ECC71;
+}
+
+.interation__list li:nth-child(3) i {
+  color: #DC143C	;
+}
+
+.interation__list li span {
+  font-size: 1rem;
+}
+
