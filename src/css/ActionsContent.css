@@ -1,0 +1,36 @@
+.actions__container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.button__action {
+  width: 120px;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+
+  border: none;
+  outline: none;
+  border-radius: 6px;
+
+  cursor: pointer;
+  transition: all 0.4s;
+
+  color: white;
+}
+
+.button__quotes {
+  background: #2c2250;
+}
+
+.button__quotes:hover {
+  background: #443592;
+}
+
+.button__favorite {
+  background: #2F4F4F;
+}
+
+.button__favorite:hover {
+  background: #3e6b6b;
+}
