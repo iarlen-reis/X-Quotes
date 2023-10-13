@@ -8,10 +8,10 @@
 }
 
 .tweet__content h2 {
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .tweet__content p {
   text-align: start;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
