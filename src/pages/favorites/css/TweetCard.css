@@ -1,0 +1,72 @@
+.tweet__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  padding: 0.7rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tweet__infos {
+  display: flex;
+  align-items: start;
+  gap: 0.8rem;
+}
+
+.tweet__image {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 50%;
+
+  border: dotted  rgba(255, 0, 0, 0.5);
+}
+
+.tweet__creator {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.tweet__creator span {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.tweet__content {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.tweet__content p {
+  max-width: 320px;
+  display: flex;
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+
+}
+
+.button__tweet {
+  display: flex;
+  align-self: flex-end;
+
+  cursor: pointer;
+  padding: 0.6rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+  outline: none;
+  background: none;
+}
+
+.button__tweet i {
+  color: white;
+  transition: all 0.4s;
+}
+
+.button__tweet:hover i {
+  transform: scale(1.1);
+}

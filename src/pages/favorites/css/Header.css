@@ -1,0 +1,11 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem;
+}
+
+.header i {
+  font-size: 1.3rem;
+  color: gold;
+}

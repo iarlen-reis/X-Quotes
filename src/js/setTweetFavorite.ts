@@ -3,6 +3,7 @@ interface QuotesProps {
   username: string;
   profileImage: string;
   tweetLink: string;
+  tweetContent: string;
 }
 
 export const setTweetFavorite = () => {
@@ -23,12 +24,19 @@ export const setTweetFavorite = () => {
   const profileName = allInfos[0].innerText;
   const profileUsername = allInfos[3].innerText;
 
-  const profileImage = profileTabidex.querySelector("img") as HTMLImageElement;
+  const profileImage = profileTabidex.querySelector(
+    "img.css-9pa8cd"
+  ) as HTMLImageElement;
+
+  const tweetContent = profileTabidex.querySelector(
+    ".css-901oao.r-1nao33i.r-37j5jr.r-1inkyih.r-16dba41.r-135wba7.r-bcqeeo.r-bnwqim.r-qvutc0"
+  ) as HTMLSpanElement;
 
   const tweet = {
     name: profileName,
     username: profileUsername,
     profileImage: profileImage.src,
+    tweetContent: tweetContent.innerText,
     tweetLink: `https://twitter.com${window.location.pathname}`,
   };
 
