@@ -3,6 +3,7 @@ import { getQuotes } from "./js/getQuotes";
 import { setProfileTweet } from "./js/setProfileTweet";
 import { setTweetFavorite } from "./js/setTweetFavorite";
 import { MessageProps } from "./types/MessageProfileTypes";
+import { getTweetsFavorites } from "./utils/getTweetsFavorites";
 import { showTweetNotSelected } from "./js/showTweetNotSelected";
 
 const linkQuotes = document.querySelector(
@@ -24,13 +25,25 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 });
 
-chrome.runtime.onMessage.addListener((message: MessageProps) => {
+chrome.runtime.onMessage.addListener(async (message: MessageProps) => {
   if (message.type === "profileData") {
     setProfileTweet(message);
   }
 
   if (message.type === "showNotSelected") {
     showTweetNotSelected();
+  }
+
+  if (message.type === "getTweetsFavorites") {
+    const [tab] = await chrome.tabs.query({
+      active: true,
+      currentWindow: true,
+    });
+
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id as number },
+      func: getTweetsFavorites,
+    });
   }
 });
 
@@ -47,23 +60,23 @@ favoriteButton.addEventListener("click", async () => {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   const icon = favoriteButton.querySelector("i") as HTMLElement;
 
-    icon.classList.toggle("fa-regular");
-    icon.classList.toggle("fa-solid");
+  icon.classList.toggle("fa-regular");
+  icon.classList.toggle("fa-solid");
 
-
-    chrome.scripting.executeScript({
-      target: { tabId: tab.id as number },
-      func: setTweetFavorite,
-    });
-})
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id as number },
+    func: setTweetFavorite,
+  });
+});
 
 linkFavorites.addEventListener("click", async () => {
   chrome.windows.create({
     url: "./src/pages/favorites/favorites.html",
     type: "popup",
     width: 400,
-    height: 300,
+    height: 500,
     left: 100,
     top: 100,
+    setSelfAsOpener: true,
   });
 });
