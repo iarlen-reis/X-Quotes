@@ -1,20 +1,7 @@
 import { formateText } from "../utils/formateText";
+import { MessageProps } from "../types/MessageProfileTypes";
 
-interface MessageProfileProps {
-  type: string;
-  name: string;
-  username: string;
-  image: string;
-  tweet: string;
-  stats: {
-    comments: string;
-    retweets: string;
-    likes: string;
-    saves: string;
-  };
-}
-
-export const setProfileTweet = (message: MessageProfileProps) => {
+export const setProfileTweet = (message: MessageProps) => {
   const tweetName = document.querySelector("#tweet__name") as HTMLSpanElement;
   const tweetUsername = document.querySelector(
     "#tweet__username"
@@ -31,19 +18,41 @@ export const setProfileTweet = (message: MessageProfileProps) => {
   const tweetRetweets = document.querySelector(
     "#tweet__retweets"
   ) as HTMLSpanElement;
-  const tweetLikes = document.querySelector(
-    "#tweet__likes"
-  ) as HTMLSpanElement;
+  const tweetLikes = document.querySelector("#tweet__likes") as HTMLSpanElement;
   const tweetSaves = document.querySelector(
     "#tweet__bookmarks"
   ) as HTMLSpanElement;
 
-  tweetName.innerText = message.name;
-  tweetUsername.innerText = message.username;
-  tweetImage.src = message.image;
-  tweetText.innerText = formateText(message.tweet);
-  tweetComments.innerText = message.stats.comments ? message.stats.comments : "0";
-  tweetRetweets.innerText = message.stats.retweets ? message.stats.retweets : "0";
-  tweetLikes.innerText = message.stats.likes ? message.stats.likes : "0";
-  tweetSaves.innerText = message.stats.saves ? message.stats.saves : "0";
+  const favorites = document.querySelector(
+    "#button__favorite"
+  ) as HTMLButtonElement;
+
+  const icon = favorites.querySelector("i") as HTMLElement;
+
+  const quoteExists =
+    message.quotes.findIndex(
+      (quote) => quote.tweetLink === message.tweet.tweetLink
+    ) !== -1;
+
+  if (quoteExists) {
+    icon.classList.toggle("fa-regular");
+    icon.classList.toggle("fa-solid");
+  }
+
+  tweetImage.src = message.tweet.image;
+  tweetName.innerText = message.tweet.name;
+  tweetUsername.innerText = message.tweet.username;
+  tweetText.innerText = formateText(message.tweet.tweetContent);
+  tweetLikes.innerText = message.tweet.stats.likes
+    ? message.tweet.stats.likes
+    : "0";
+  tweetSaves.innerText = message.tweet.stats.saves
+    ? message.tweet.stats.saves
+    : "0";
+  tweetRetweets.innerText = message.tweet.stats.retweets
+    ? message.tweet.stats.retweets
+    : "0";
+  tweetComments.innerText = message.tweet.stats.comments
+    ? message.tweet.stats.comments
+    : "0";
 };

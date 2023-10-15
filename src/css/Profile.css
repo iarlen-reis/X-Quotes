@@ -11,6 +11,14 @@
   border: dotted  rgba(255, 0, 0, 0.5);
 }
 
+.profile__info__container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+}
+
 .profile__info {
   display: flex;
   flex-direction: column;
@@ -25,4 +33,15 @@
 .profile__info span {
   font-style: italic;
   font-size: 0.9rem;
+}
+
+.button__favorite {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: none;
+}
+
+.button__favorite i {
+  color: #FFBF00;
 }

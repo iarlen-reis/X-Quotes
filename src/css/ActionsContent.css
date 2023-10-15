@@ -1,13 +1,18 @@
 .actions__container {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
+
+  margin-top: 0.6rem;
 }
 
 .button__action {
-  width: 120px;
+  width: 100%;
   font-size: 1rem;
-  padding: 0.5rem 1rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  padding: 0.8rem 1rem;
 
   border: none;
   outline: none;
@@ -20,17 +25,10 @@
 }
 
 .button__quotes {
-  background: #2c2250;
+  background: #2ECC71;
+
 }
 
 .button__quotes:hover {
-  background: #443592;
-}
-
-.button__favorite {
-  background: #2F4F4F;
-}
-
-.button__favorite:hover {
-  background: #3e6b6b;
+  background: #3dfc8c;
 }
