@@ -1,13 +1,21 @@
-export const getProfile = () => {
+import { QuotesProps } from "../types/QuotesTypes";
+
+export const getProfile = async () => {
   const pathname = window.location.pathname;
+
   if (pathname.includes("status") && !pathname.includes("/quotes")) {
+    const quotes: QuotesProps[] =
+      JSON.parse(localStorage.getItem("@quotes/saved") as string) || [];
+
     const timeLine = document.querySelector(
       ".css-1dbjc4n.r-1igl3o0.r-qklmqi.r-1adg3ll.r-1ny4l3l"
     ) as HTMLSpanElement;
-    const profileTabidex = timeLine.querySelector(
+
+    const tweetTabidex = timeLine.querySelector(
       `[tabindex="${-1}"]`
     ) as HTMLElement;
-    const profile = profileTabidex.querySelector(
+
+    const profile = tweetTabidex.querySelector(
       '[data-testid="User-Name"]'
     ) as HTMLElement;
 
@@ -15,44 +23,43 @@ export const getProfile = () => {
       "span"
     ) as NodeListOf<HTMLSpanElement>;
 
-    const profileName = allInfos[0].innerText;
-    const profileUsername = allInfos[3].innerText;
-
-    const profileImage = profileTabidex.querySelector(
-      "img"
+    const profileImage = tweetTabidex.querySelector(
+      "img.css-9pa8cd"
     ) as HTMLImageElement;
 
-    const tweetContent = profileTabidex.querySelector(
+    const tweetContent = tweetTabidex.querySelector(
       ".css-901oao.r-1nao33i.r-37j5jr.r-1inkyih.r-16dba41.r-135wba7.r-bcqeeo.r-bnwqim.r-qvutc0"
     ) as HTMLSpanElement;
 
-    const tweetStats = profileTabidex.querySelector(
-      '[role="group"]'
-    )?.querySelectorAll('[role="button"]') as NodeListOf<HTMLButtonElement>;
-
-    const tweetComments = tweetStats[0];
-    const tweetRetweets = tweetStats[1];
-    const tweetLikes = tweetStats[2];
-    const tweetSaves = tweetStats[3];
+    const tweetStats = tweetTabidex
+      .querySelector('[role="group"]')
+      ?.querySelectorAll('[role="button"]') as NodeListOf<HTMLButtonElement>;
 
     const statsTweets = {
-      comments: tweetComments.innerText,
-      retweets: tweetRetweets.innerText,
-      likes: tweetLikes.innerText,
-      saves: tweetSaves.innerText,
+      likes: tweetStats[2].innerText,
+      saves: tweetStats[3].innerText,
+      retweets: tweetStats[1].innerText,
+      comments: tweetStats[0].innerText,
+    };
+
+    const tweet = {
+      stats: statsTweets,
+      image: profileImage.src,
+      name: allInfos[0].innerText,
+      username: allInfos[3].innerText,
+      tweetContent: tweetContent.innerText,
+      tweetLink: `https://twitter.com${window.location.pathname}`,
     };
 
     chrome.runtime.sendMessage({
+      tweet,
+      quotes,
       type: "profileData",
-      name: profileName,
-      username: profileUsername,
-      image: profileImage.src,
-      tweet: tweetContent.innerText,
-      stats: statsTweets,
     });
 
     return;
   }
+
   chrome.runtime.sendMessage({
     type: "showNotSelected",
   });

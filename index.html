@@ -37,9 +37,14 @@
         <div class="main__container">
           <div class="profile__card">
             <img src="/public/x-quotes.png" alt="imagem" id="tweet__image" />
-            <div class="profile__info">
-              <h1 id="tweet__name">Teste</h1>
-              <span id="tweet__username">@testinho</span>
+            <div class="profile__info__container">
+              <div class="profile__info">
+                <h1 id="tweet__name">Teste</h1>
+                <span id="tweet__username">@testinho</span>
+              </div>
+              <button title="favoritar" aria-label="favoritar" class="button__favorite" id="button__favorite">
+                <i class="fa-regular fa-star"></i>
+              </button>
             </div>
           </div>
           <div class="tweet__content">
@@ -72,8 +77,7 @@
             </ul>
           </div>
           <div class="actions__container">
-            <a href="#" class="button__quotes button__action">Quotes</a>
-            <button class="button__favorite button__action">Salvar</button>
+            <a href="#" class="button__quotes button__action">Ver Quotes</a>
           </div>
         </div>
       </main>
@@ -87,6 +91,7 @@
         </a>
       </footer>
     </div>
+    <script type="module" src="./dist/js/getProfile.js"></script>
     <script type="module" src="./dist/index.js"></script>
   </body>
 </html>
