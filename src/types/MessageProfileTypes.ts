@@ -1,5 +1,3 @@
-import { QuotesProps } from "./QuotesTypes";
-
 interface TweetProps {
     type: string;
     name: string;
@@ -18,7 +16,6 @@ interface TweetProps {
 
 export interface MessageProfileProps {
   tweet: TweetProps;
-  quotes: QuotesProps[];
 }
 
 export interface MessageProps extends MessageProfileProps {

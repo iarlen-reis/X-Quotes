@@ -1,12 +1,7 @@
-import { QuotesProps } from "../types/QuotesTypes";
-
 export const getProfile = async () => {
   const pathname = window.location.pathname;
 
   if (pathname.includes("status") && !pathname.includes("/quotes")) {
-    const quotes: QuotesProps[] =
-      JSON.parse(localStorage.getItem("@quotes/saved") as string) || [];
-
     const timeLine = document.querySelector(
       ".css-1dbjc4n.r-1igl3o0.r-qklmqi.r-1adg3ll.r-1ny4l3l"
     ) as HTMLSpanElement;
@@ -53,7 +48,6 @@ export const getProfile = async () => {
 
     chrome.runtime.sendMessage({
       tweet,
-      quotes,
       type: "profileData",
     });
 
