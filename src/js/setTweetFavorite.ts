@@ -1,12 +1,6 @@
-interface QuotesProps {
-  name: string;
-  username: string;
-  profileImage: string;
-  tweetLink: string;
-  tweetContent: string;
-}
+import { QuotesProps } from "../types/QuotesTypes";
 
-export const setTweetFavorite = () => {
+export const setTweetFavorite = async () => {
   const timeLine = document.querySelector(
     ".css-1dbjc4n.r-1igl3o0.r-qklmqi.r-1adg3ll.r-1ny4l3l"
   ) as HTMLSpanElement;
@@ -40,27 +34,33 @@ export const setTweetFavorite = () => {
     tweetLink: `https://twitter.com${window.location.pathname}`,
   };
 
-  const quotes: QuotesProps[] =
-    JSON.parse(localStorage.getItem("@quotes/saved") as string) || [];
-
-  const quoteExists =
-    quotes.findIndex(
-      (quote) =>
-        quote.tweetLink === `https://twitter.com${window.location.pathname}`
-    ) !== -1;
-
-  if (quoteExists) {
-    quotes.splice(
-      quotes.findIndex(
-        (quote) =>
-          quote.tweetLink === `https://twitter.com${window.location.pathname}`
-      ),
-      1
-    );
-
-    localStorage.setItem("@quotes/saved", JSON.stringify(quotes));
-    return;
+  function saveToStorage(dataArray: QuotesProps[]) {
+    chrome.storage.local.set({ myData: dataArray });
   }
 
-  localStorage.setItem("@quotes/saved", JSON.stringify([...quotes, tweet]));
+  function loadFromStorage(callback: (data: QuotesProps[]) => void) {
+    chrome.storage.local.get({ myData: [] }, (result) => {
+      const dataArray: QuotesProps[] = result.myData;
+      callback(dataArray);
+    });
+  }
+
+  function addDataToObject(newData: QuotesProps) {
+    loadFromStorage((dataArray) => {
+      const existingIndex = dataArray.findIndex(
+        (data) => data.tweetLink === newData.tweetLink
+      );
+
+      if (existingIndex !== -1) {
+        dataArray.splice(existingIndex, 1);
+        return saveToStorage(dataArray);
+      }
+
+      dataArray.push(newData);
+
+      saveToStorage(dataArray);
+    });
+  }
+
+  addDataToObject(tweet);
 };

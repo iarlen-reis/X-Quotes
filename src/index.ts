@@ -3,7 +3,6 @@ import { getQuotes } from "./js/getQuotes";
 import { setProfileTweet } from "./js/setProfileTweet";
 import { setTweetFavorite } from "./js/setTweetFavorite";
 import { MessageProps } from "./types/MessageProfileTypes";
-import { getTweetsFavorites } from "./utils/getTweetsFavorites";
 import { showTweetNotSelected } from "./js/showTweetNotSelected";
 
 const linkQuotes = document.querySelector(
@@ -27,23 +26,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 chrome.runtime.onMessage.addListener(async (message: MessageProps) => {
   if (message.type === "profileData") {
-    setProfileTweet(message);
+    return setProfileTweet(message);
   }
 
   if (message.type === "showNotSelected") {
-    showTweetNotSelected();
-  }
-
-  if (message.type === "getTweetsFavorites") {
-    const [tab] = await chrome.tabs.query({
-      active: true,
-      currentWindow: true,
-    });
-
-    chrome.scripting.executeScript({
-      target: { tabId: tab.id as number },
-      func: getTweetsFavorites,
-    });
+    return showTweetNotSelected();
   }
 });
 
