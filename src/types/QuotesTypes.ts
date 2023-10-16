@@ -3,4 +3,5 @@ export interface QuotesProps {
   username: string;
   profileImage: string;
   tweetLink: string;
+  tweetContent: string;
 }
