@@ -1,4 +1,5 @@
 import { formateText } from "../utils/formateText";
+import { loadFromStorage } from "../utils/readStorage";
 import { MessageProps } from "../types/MessageProfileTypes";
 
 export const setProfileTweet = (message: MessageProps) => {
@@ -29,15 +30,14 @@ export const setProfileTweet = (message: MessageProps) => {
 
   const icon = favorites.querySelector("i") as HTMLElement;
 
-  const quoteExists =
-    message.quotes.findIndex(
-      (quote) => quote.tweetLink === message.tweet.tweetLink
-    ) !== -1;
+  loadFromStorage((dataArray) => {
+    const tweetExists = dataArray.findIndex(data => data.tweetLink === message.tweet.tweetLink) !== -1;
 
-  if (quoteExists) {
-    icon.classList.toggle("fa-regular");
-    icon.classList.toggle("fa-solid");
-  }
+    if (tweetExists) {
+      icon.classList.toggle("fa-regular");
+      icon.classList.toggle("fa-solid");
+    }
+  })
 
   tweetImage.src = message.tweet.image;
   tweetName.innerText = message.tweet.name;
